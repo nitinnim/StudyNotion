@@ -24,7 +24,7 @@ app.use(cookieParser());
 // cors hmare frontend ki request ke according backend ko entrtain krne ke kaam aata hai
 app.use(
 	cors({
-		origin:"http://localhost:3000",
+		origin:"*",
 		credentials:true,
 	})
 )
