@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./Pages/HomePage";
-import Footer from "./components/common/Footer";
 import Navbar from "./components/common/Navbar";
 
 import OpenRoute from "./components/core/auth/OpenRoute";

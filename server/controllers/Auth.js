@@ -5,7 +5,7 @@ const Profile = require('../models/Profile');
 const otpGenerator = require('otp-generator');
 const jwt = require('jsonwebtoken');
 const mailSender = require("../utils/mailSender");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { passwordUpdated } = require("../mail/templates/passwordUpdate")
 require("dotenv").config()
 
@@ -270,12 +270,13 @@ exports.changePassword = async (req, res) => {
 		try {
 			const emailResponse = await mailSender(
 				updatedUserDetails.email,
+                "Password for your account has been updated",
 				passwordUpdated(
 					updatedUserDetails.email,
 					`Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
 				)
 			);
-			console.log("Email sent successfully:", emailResponse.response);
+			// console.log("Email sent successfully:", emailResponse.response);
 		} catch (error) {
 			// If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
 			console.error("Error occurred while sending email:", error);
